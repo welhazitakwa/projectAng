@@ -1,0 +1,16 @@
+<h1 style="text-align: center; padding: 2%;">Liste des résidences</h1>
+<div class="container">
+  <div class="row d-flex flex-wrap">
+    <div *ngFor="let R of listResidences" class="col-md-4">
+      <div class="card" style="width: 18rem; margin: 10px;">
+        <img [src]="R.image" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ R.name }}</h5>
+          <p class="card-text">{{ R.status }}</p>
+          <p *ngIf="selectedResidenceId === R.id" class="card-text">{{ R.address }}</p>
+          <a class="btn btn-primary" (click)="showAdd(R)">Show Location</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
