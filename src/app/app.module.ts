@@ -7,7 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
-import { ResidencesComponent } from './residences/residences.component';
+import { ResidencesComponent } from './ResidencesFolder/residences/residences.component';
+import { ResidenceDetailsComponent } from './ResidencesFolder/residence-details/residence-details.component';
+import { AddResidenceComponent } from './ResidencesFolder/add-residence/add-residence.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +17,12 @@ import { ResidencesComponent } from './residences/residences.component';
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    ResidencesComponent
+    ResidencesComponent,
+    ResidenceDetailsComponent,
+    AddResidenceComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,43 @@
+<h1 style="text-align: center; padding: 2%;">Liste des résidences</h1>
+<div class="container">
+  <div>
+    <input type="search" name="" id="" [(ngModel)]="searchItem">
+  </div>
+  <div class="row d-flex flex-wrap">
+    <div *ngFor="let R of listResidences" class="col-md-4">
+      <div *ngIf="R.name == searchItem || !searchItem">
+      <div class="card" style="width: 18rem; margin: 10px;">
+        <img [src]="R.image" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ R.name }}</h5>
+          
+          <p *ngIf="selectedResidenceId === R.id" class="card-text">{{ R.address }}</p>
+
+
+          <div [ngSwitch]="R.status" class="status" >
+            <div *ngSwitchCase="'Disponible'">
+              <span>✔️Disponible </span>
+            </div>
+            <div *ngSwitchCase="'En Construction'">
+              <span class="status-icon under-construction">👀 En Construction</span>
+            </div>
+            <div *ngSwitchDefault>
+              <span class="status-icon unknown">?? inconnu </span>
+            </div>
+            <div *ngSwitchCase="'Vendu'">
+              <span class="status-icon unknown">❌Vendu </span>
+            </div>
+                 
+            <button class="btn btn-primary" (click)="addFavorite(R)" >
+            {{ isFavorite(R) ?'Unlike' : 'Like'}}
+          </button>
+
+          </div>
+          <a class="btn btn-primary" (click)="showAdd(R)">Show Location</a> 
+          
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
