@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Residence } from 'src/app/Core/Model/residence';
+import { ResidenceService } from 'src/app/Core/Services/residence.service';
 
 @Component({
   selector: 'app-add-residence',
@@ -20,7 +21,7 @@ export class AddResidenceComponent {
     status: new FormControl(''),
   });
 
-  constructor( private Rout: Router) {}
+  constructor(private resServ: ResidenceService, private Rout: Router) {}
   get name() {
     return this.addForm.get('name');
   }
@@ -33,7 +34,9 @@ export class AddResidenceComponent {
   SaveResidence(F: FormGroup) {
     this.R = { ...F.value };
     console.log(this.R);
-    this.resServ.addResidence(this.R);
-    this.Rout.navigate(['/residences']);
+    this.resServ.addResidence(this.R).subscribe(() => {
+      console.log('Residence ajoutée avec succès');
+      this.Rout.navigate(['/residences']);
+    });
   }
 }

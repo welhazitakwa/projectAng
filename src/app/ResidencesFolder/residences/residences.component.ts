@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Residence } from '../../Core/Model/residence';
+import { ResidenceService } from 'src/app/Core/Services/residence.service';
 
 @Component({
   selector: 'app-residences',
@@ -7,6 +8,7 @@ import { Residence } from '../../Core/Model/residence';
   styleUrls: ['./residences.component.css'],
 })
 export class ResidencesComponent {
+  constructor(private resServ: ResidenceService) {}
   listResidences: Residence[] = [
     {
       id: 1,
@@ -37,7 +39,14 @@ export class ResidencesComponent {
       status: 'En Construction',
     },
   ];
-
+  ngOnInit() {
+    //this.listResidences=this.resServ.getResidence();
+    this.resServ.getResidence().subscribe(
+      (data) => (this.listResidences = data),
+      (erreur) => console.log('erreur'),
+      () => console.log('le chargementdes residences est terminés ')
+    );
+  }
   selectedResidenceId: number | null = null;
   favoriteResidences: number[] = [];
   searchItem = '';
@@ -65,4 +74,5 @@ export class ResidencesComponent {
   isFavorite(R: Residence): boolean {
     return this.favoriteResidences.includes(R.id);
   }
+  
 }
