@@ -32,6 +32,7 @@ export class AddResidenceComponent {
 
   R!: Residence;
   SaveResidence(F: FormGroup) {
+    
     this.R = { ...F.value };
     console.log(this.R);
     this.resServ.addResidence(this.R).subscribe(() => {

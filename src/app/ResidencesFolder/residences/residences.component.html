@@ -40,6 +40,8 @@
           </div>
           <a class="btn btn-primary" (click)="showAdd(R)">Show Location</a> 
           <a   class="btn btn-primary" [routerLink]="['/residenceD',R.id]">Show Details</a>
+          <a   class="btn btn-warning" [routerLink]="['/update',R.id]" [queryParams]="{'title':R.name}">Update</a>
+          <a   class="btn btn-danger" (click)="delete(R.id)">Supprimer</a>
           
         </div>
       </div>

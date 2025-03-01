@@ -5,11 +5,13 @@ import { ResidencesComponent } from './ResidencesFolder/residences/residences.co
 import { ResidenceDetailsComponent } from './ResidencesFolder/residence-details/residence-details.component';
 import { AddResidenceComponent } from './ResidencesFolder/add-residence/add-residence.component';
 import { AppartementComponent } from './Appartements/appartement/appartement.component';
+import { UpdateResidenceComponent } from './ResidencesFolder/update-residence/update-residence.component';
 
 const routes: Routes = [
   { path: 'Home', component: MainComponent },
   { path: 'Residences', component: ResidencesComponent },
   { path: 'residenceD/:id', component: ResidenceDetailsComponent },
+  { path: 'update/:id', component: UpdateResidenceComponent },
   { path: '', component: ResidencesComponent },
   { path: 'add', component: AddResidenceComponent },
   { path: 'apartment', component: AppartementComponent },

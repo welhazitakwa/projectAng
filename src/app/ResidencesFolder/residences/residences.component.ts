@@ -74,5 +74,12 @@ export class ResidencesComponent {
   isFavorite(R: Residence): boolean {
     return this.favoriteResidences.includes(R.id);
   }
-  
+   delete(id: number){
+    this.resServ.deleteResidence(id).subscribe();
+    this.resServ.getResidence().subscribe(
+      (data) => (this.listResidences = data),
+      (erreur) => console.log('erreur'),
+      () => console.log('le chargementdes residences est terminés ')
+    );
+   }
 }
